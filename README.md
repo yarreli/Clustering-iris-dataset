@@ -1,4 +1,43 @@
 
+
+
+---
+por [yareli](https://github.com/yarreli)
+
+
+
+# Cluster jerárquico flores de iris
+
+_La idea general del clúster jerárquico se basa en la distancia entre los puntos del conjunto de datos. 
+Hay dos formas de hacer clustering jerárquico: Agglomerative y Divisive. Para inferir el número de subgrupos 
+en el conjunto se usa el dendograma.<br>
+El conjunto de datos flor de iris contiene 50 observaciones de cada una de las 3 variedades de iris: setosa, 
+virginica y versicolor. Estamos interesados en aplicar 3 algoritmos de agrupamiento y comparar su 
+desempeño, además de medir la "cophenetic correlation" entre cada resultado del agrupamiento, la cual
+es una medida de cuán fielmente un dendrograma preserva las distancias por pares entre el conjunto de datos._
+
+### Explorando los datos
+Previo a la clusterización, se hace un análisis para familiarizarse con los datos por medio de estadísticos
+descriptivos y técnicas de visualización. Además de  analizar la presencia de outliers.
+
+## Clúster jerárquico 🖇️
+El grupamiento empleado fue *Agglomerative*, en donde se forman grupos de abajo hacia arriba, y
+hay 4 formas de linking (vincular) los datos: Ward, Complete, Single y Average. <br>
+Primero se generó el dendograma en donde la distancia entre las barras representa la distancia al 
+siguiente centro del grupo, esta técnica de visualización ayuda a determinar el número de subgrupos
+a formar. <br>
+A pesar de lo que sugieran los dendogramas, se eligieron 3 clúster en cada uno de los tres métodos, ya
+que sabemos que hay tres variedades de flor, sin embargo, esto no siempre ocurre en la realidad.
+
+## Pasos en el método de clustering jerárquico
+1. Dibujar el dendograma
+2. Generar el clúster: utilizando la función de python:
+```
+AgglomerativeClustering(n_clusters=k, affinity="euclidean", linkage="ward")
+```
+### Determinar los métodos a comparar
+La función anterior se aplicó a todas las posibles combinaciones de los métodos, en donde se pueden combinar affinity y linkage para conseguir métodos con precisiones diferentes y se 
+elegiría el de la mejor precisión. A continuación se muestran algunos ejemplos de las posibles combinaciones.
 ```
 #for affin in ['euclidean','manhattan', 'cosine']:     
 for affin in ['euclidean','manhattan']:
@@ -39,41 +78,3 @@ Obtengo el puntaje de precisión más alto de 0.68 cuando se usa Euclidean y el 
 Por lo tanto, es obvio que elegiré el tercero como modelo de agrupación jerárquica para el conjunto de datos de Iris.
 
 
-
-
----
-por [yareli](https://github.com/yarreli)
-
-
-
-# Cluster jerárquico flores de iris
-
-_La idea general del clúster jerárquico se basa en la distancia entre los puntos del conjunto de datos. 
-Hay dos formas de hacer clustering jerárquico: Agglomerative y Divisive. Para inferir el número de subgrupos 
-en el conjunto se usa el dendograma.<br>
-El conjunto de datos contiene 50 observaciones de cada una de las 3 variedades de iris: setosa, 
-virginica y versicolor. Estamos interesados en aplicar 3 algoritmos de agrupamiento y comparar su 
-desempeño, además de medir la "cophenetic correlation" entre cada resultado del agrupamiento, la cual
-es una medida de cuán fielmente un dendrograma preserva las distancias por pares entre el conjunto de datos._
-
-### Explorando los datos
-Previo a la clusterización, se hace un análisis para familiarizarse con los datos por medio de estadísticos
-descriptivos y técnicas de visualización. Además de  análizar la presencia de outliers.
-
-## Clúster jerárquico 🖇️
-La forma de agrupamiento fue con *Agglomerative*, en donde se forman grupos de abajo hacia arriba, y
-hay 4 formas de linking (vincular) los datos: Ward, Complete, Single y Average. <br>
-Primero se generó el dendograma en donde la distancia entre las barras representa la distancia al 
-siguiente centro del grupo, esta técnica de visualización ayuda a determinar el número de subgrupos
-a formar. <br>
-A pesar de lo que sugieran los dendogramas, se eligieron 3 clúster en cada uno de los tres métodos, ya
-que sabemos que hay tres variedades de flor, sin embargo, esto no siempre ocurre en la realidad.
-
-## Pasos en el método de clustering jerárquico
-1. Dibujar el dendograma
-2. Generar el clúster: utilizando la función de python:
-```
-AgglomerativeClustering(n_clusters=k, affinity="euclidean", linkage="ward")
-```
-donde se pueden combinar affinity y linkage para conseguir métodos con precisiones diferentes y se 
-elegiría el de la mejor precisión. A continuación se muestran 3 ejemplos de las posibles combinaciones.
