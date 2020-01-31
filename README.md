@@ -75,12 +75,11 @@ En este caso es claro que un grupo sí está bien definido, pero los otros dos n
 ### Desempeño de los métodos
 Al evaluar el desempeño de los tres modelos se hace con la tasa de éxitos, que fue calculada como la proporción de los elementos bien claificados respecto al total. El que trabaja mejor es el que usa linkage=ward.<br>
 El Cophenetic Correlation Coefficient(CPCC) es una medida de la bondad de ajuste del clúster, para obtenerlo se necesita calcular la correlación entre la matriz de distancias y la "Cophenetic matrix", esta última es la distancia de los datos originales en el dendograma. Con esta medida se concluye lo mismo que con la anterior; los métodos *ward*, *complete* y *single* se desempeñan de mejor a menor en ese orden.
-
-En los tres agrupamientos el CCPP se comportó de manera similar que la tasa de éxitos.
-
-
-
-Obtengo el puntaje de precisión más alto de 0.68 cuando se usa Euclidean y el pAverage como parámetros de enlace. 
-Por lo tanto, es obvio que elegiré el tercero como modelo de agrupación jerárquica para el conjunto de datos de Iris.
-
-
+```
+Success ratio and cophenetic correlation:
+                   accuracy     cophe
+Ward Linkage      89.333333  0.872828
+Complete Linkage  84.000000  0.726986
+Single Linkage    68.000000  0.863879
+```
+En los tres agrupamientos el CCPP se comportó de manera similar que la tasa de éxitos. Por lo tanto, es obvio que elegiré el Ward Linkage como modelo de agrupación jerárquica para el conjunto de datos de Iris.
