@@ -2,7 +2,7 @@
 
 
 ---
-por [yareli](https://github.com/yarreli)
+por [Yareli](https://github.com/yarreli)
 
 
 
