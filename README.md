@@ -56,23 +56,29 @@ Accuracy for a model with affinity= manhattan and linkage= single: 0.67
 Accuracy for a model with affinity= manhattan and linkage= average: 0.90
 Accuracy for a model with affinity= cosine and linkage= average: 0.66
 ```
+Después de lo anterior se eligieron tres métodos para analizarlos a más profundidad, se eligieron de tal manera que
+tuvieran precisiones alejadas entre sí.
 
-
-
- 
-### Método 1: Ward
-La distancia para el último subgrupo es de 21 unidades aproximadamente (12 y 33), para el penúltimo fue
+## Resultados
+### Método 1: Euclidean y Ward 
+En este método, la distancia para el último subgrupo es de 21 unidades aproximadamente (12 y 33), para el penúltimo fue
 de 6 unidades, el anterior de 1, y las siguientes mucho menores. Por lo que en este caso tendría 
 sentido elegir 2 o 3 clúster.
 
-### Metodo 2: Complete
-de 4 a 7 unidades en distancia antes del último grupo formado, 2.5 a 3, menos definidos que en el caso anterior.
+### Metodo 2: Euclidean y Complete
+Aquí, los grupos se encontraron separados en el rango de 4 a 7 unidades en distancia, es decir aproximadamente 3 unidades
+los separan antes del último grupo formado. Un grupo previo se separa entre los puntos 2.5 a 3, menos definidos que en el caso anterior. Aquí es menos claro que se forman los 3 grupos que existen en realidad.
 
-### Método 3: Single
-0.8 a 1.6  0.78 a 0.8
-Es claro que un grupo sí está bien definido, pero los otros dos no claramente.
+### Método 3: Euclidean y Single
+En este caso es claro que un grupo sí está bien definido, pero los otros dos no claramente. Dado que no hay distancias tan distintas entre los grupos que se forman, se puede interpretar que aquí puede haber mayor error de agrupamiento ya que los grupos son más similares entre sí.
 
-menos definidoooooo
+### Desempeño de los métodos
+Al evaluar el desempeño de los tres modelos se hace con la tasa de éxitos, que fue calculada como la proporción de los elementos bien claificados respecto al total. El que trabaja mejor es el que usa linkage=ward.<br>
+El Cophenetic Correlation Coefficient(CPCC) es una medida de la bondad de ajuste del clúster, para obtenerlo se necesita calcular la correlación entre la matriz de distancias y la "Cophenetic matrix", esta última es la distancia de los datos originales en el dendograma. Con esta medida se concluye lo mismo que con la anterior; los métodos *ward*, *complete* y *single* se desempeñan de mejor a menor en ese orden.
+
+En los tres agrupamientos el CCPP se comportó de manera similar que la tasa de éxitos.
+
+
 
 Obtengo el puntaje de precisión más alto de 0.68 cuando se usa Euclidean y el pAverage como parámetros de enlace. 
 Por lo tanto, es obvio que elegiré el tercero como modelo de agrupación jerárquica para el conjunto de datos de Iris.
