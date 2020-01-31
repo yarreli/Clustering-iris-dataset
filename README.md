@@ -1,24 +1,21 @@
 
 ```
-Hclus = AgglomerativeClustering(n_clusters=3, affinity="manhattan", linkage='average')
-Hclus.fit(flors)
-sm.accuracy_score(vari.variety_num, Hclus.labels_)    # accuracy
-
-Hclus = AgglomerativeClustering(n_clusters=3, affinity="euclidean", linkage='ward')
-Hclus.fit(flors)
-sm.accuracy_score(vari.variety_num, Hclus.labels_)      # accuracy
-
-Hclus = AgglomerativeClustering(n_clusters=3, affinity="euclidean", linkage='single')
-Hclus.fit(flors)
-sm.accuracy_score(vari.variety_num, Hclus.labels_)      # accuracy
-
-(affinity="euclidean", linkage='ward')   # accuracy = 0.8933
-(affinity="euclidean", linkage='single')  # 0.68
-(affinity="euclidean", linkage='average') # 0.9066
-(affinity="euclidean", linkage='complete') #0.4933
-(affinity="manhattan", linkage='single')  # 0.6733
-(affinity="manhattan", linkage='average') # 0.9
-(affinity="cosine", linkage='average')    # 0.66
+#for affin in ['euclidean','manhattan', 'cosine']:     
+for affin in ['euclidean','manhattan']:
+    for link in ['complete', 'single', 'average']:
+        Hclus = AgglomerativeClustering(n_clusters=3, affinity=affin, linkage=link)
+        Hclus.fit(xx)
+        print ("Accuracy for a model with affinity=", affin, "and linkage=", link, ":")      
+        print ("%.2f" % sm.accuracy_score(vari.variety_num, Hclus.labels_) )  # accuracy
+        
+Accuracy for a model with affinity=euclidean and linkage= ward: 0.89
+Accuracy for a model with affinity= euclidean and linkage= complete: 0.49
+Accuracy for a model with affinity= euclidean and linkage= single: 0.68
+Accuracy for a model with affinity= euclidean and linkage= average: 0.91
+Accuracy for a model with affinity= manhattan and linkage= complete: 0.33
+Accuracy for a model with affinity= manhattan and linkage= single: 0.67
+Accuracy for a model with affinity= manhattan and linkage= average: 0.90
+Accuracy for a model with affinity= cosine and linkage= average: 0.66
 ```
 
 
