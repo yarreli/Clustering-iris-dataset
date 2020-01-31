@@ -1,13 +1,28 @@
 
-(affinity="euclidean", linkage='ward')   # accuracy = 0.8933
+```
+Hclus = AgglomerativeClustering(n_clusters=3, affinity="manhattan", linkage='average')
+Hclus.fit(flors)
+sm.accuracy_score(vari.variety_num, Hclus.labels_)    # accuracy
 
+Hclus = AgglomerativeClustering(n_clusters=3, affinity="euclidean", linkage='ward')
+Hclus.fit(flors)
+sm.accuracy_score(vari.variety_num, Hclus.labels_)      # accuracy
+
+Hclus = AgglomerativeClustering(n_clusters=3, affinity="euclidean", linkage='single')
+Hclus.fit(flors)
+sm.accuracy_score(vari.variety_num, Hclus.labels_)      # accuracy
+
+(affinity="euclidean", linkage='ward')   # accuracy = 0.8933
 (affinity="euclidean", linkage='single')  # 0.68
 (affinity="euclidean", linkage='average') # 0.9066
 (affinity="euclidean", linkage='complete') #0.4933
-
 (affinity="manhattan", linkage='single')  # 0.6733
 (affinity="manhattan", linkage='average') # 0.9
 (affinity="cosine", linkage='average')    # 0.66
+```
+
+
+
  
 ### Método 1: Ward
 La distancia para el último subgrupo es de 21 unidades aproximadamente (12 y 33), para el penúltimo fue
@@ -65,21 +80,3 @@ AgglomerativeClustering(n_clusters=k, affinity="euclidean", linkage="ward")
 ```
 donde se pueden combinar affinity y linkage para conseguir métodos con precisiones diferentes y se 
 elegiría el de la mejor precisión. A continuación se muestran 3 ejemplos de las posibles combinaciones.
-
-```
-Hclus = AgglomerativeClustering(n_clusters=3, affinity="manhattan", linkage='average')
-Hclus.fit(flors)
-sm.accuracy_score(vari.variety_num, Hclus.labels_)    # accuracy
-# 0.9
-
-Hclus = AgglomerativeClustering(n_clusters=3, affinity="euclidean", linkage='ward')
-Hclus.fit(flors)
-sm.accuracy_score(vari.variety_num, Hclus.labels_)      # accuracy
-# 0.8933
-
-Hclus = AgglomerativeClustering(n_clusters=3, affinity="euclidean", linkage='single')
-Hclus.fit(flors)
-sm.accuracy_score(vari.variety_num, Hclus.labels_)      # accuracy
-# 0.68
-```
-
